@@ -5,631 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Arsense Aroma - Мужские ароматы</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Georgia', 'Times New Roman', serif;
-        }
-        body {
-            background: #0d1117;
-            min-height: 100vh;
-            padding: 0 0 90px;
-        }
-        .header {
-            background: #0d1117;
-            padding: 16px 16px 12px;
-            color: #e6edf3;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .header h1 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #e6edf3;
-        }
-        .header h1 span {
-            color: #58a6ff;
-            font-weight: 300;
-        }
-        .header-phone {
-            font-size: 0.75rem;
-            background: #21262d;
-            padding: 5px 14px;
-            border-radius: 30px;
-            color: #e6edf3;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .header-phone:active {
-            transform: scale(0.95);
-            opacity: 0.8;
-        }
-        .header-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 14px;
-            font-size: 0.65rem;
-            opacity: 0.5;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            margin-top: 8px;
-            color: #e6edf3;
-        }
-        .header-social {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        .header-social a {
-            color: #e6edf3;
-            text-decoration: none;
-            font-size: 0.6rem;
-            opacity: 0.5;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .type-tabs {
-            background: #0d1117;
-            padding: 10px 12px;
-            display: flex;
-            gap: 6px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            position: sticky;
-            top: 82px;
-            z-index: 99;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .type-tabs::-webkit-scrollbar {
-            display: none;
-        }
-        .type-btn {
-            padding: 6px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.02);
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #e6edf3;
-            cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
-            touch-action: manipulation;
-        }
-        .type-btn:active {
-            transform: scale(0.95);
-        }
-        .type-btn.active {
-            background: #58a6ff;
-            color: #0d1117;
-            border-color: #58a6ff;
-        }
-        .type-btn .count {
-            font-size: 0.5rem;
-            opacity: 0.5;
-            margin-left: 4px;
-        }
-        .catalog {
-            padding: 12px 12px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .card {
-            background: #161b22;
-            border-radius: 20px;
-            padding: 16px 16px 14px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .card:active {
-            border-color: rgba(88, 166, 255, 0.1);
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 4px;
-        }
-        .card-brand {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #58a6ff;
-            font-weight: 700;
-            opacity: 0.6;
-        }
-        .card-gender {
-            font-size: 0.5rem;
-            text-transform: uppercase;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 2px 10px;
-            border-radius: 30px;
-            color: #e6edf3;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .card-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #e6edf3;
-            margin-bottom: 2px;
-        }
-        .card-house {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 6px;
-        }
-        .card-vibe {
-            font-size: 0.85rem;
-            font-style: italic;
-            color: #e6edf3;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 10px 14px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            border-left: 3px solid #58a6ff;
-            line-height: 1.5;
-        }
-        .card-accords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px 6px;
-            margin-bottom: 14px;
-        }
-        .accord-tag {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 3px 12px;
-            border-radius: 30px;
-            font-size: 0.6rem;
-            font-weight: 500;
-            color: #e6edf3;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .accord-tag.primary {
-            background: rgba(88, 166, 255, 0.12);
-            color: #58a6ff;
-            border-color: rgba(88, 166, 255, 0.08);
-        }
-        .type-label {
-            display: inline-block;
-            font-size: 0.5rem;
-            padding: 2px 12px;
-            border-radius: 30px;
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .type-label.warm {
-            background: rgba(255, 150, 50, 0.15);
-            color: #ff8c42;
-        }
-        .type-label.tart {
-            background: rgba(200, 180, 100, 0.15);
-            color: #d4af37;
-        }
-        .type-label.fresh {
-            background: rgba(80, 200, 160, 0.15);
-            color: #4dd0a0;
-        }
-        .type-label.floral {
-            background: rgba(200, 150, 200, 0.12);
-            color: #ce93d8;
-        }
-        .type-label.sweet {
-            background: rgba(255, 150, 180, 0.12);
-            color: #f06292;
-        }
-        .type-label.woody {
-            background: rgba(150, 120, 80, 0.15);
-            color: #a1887f;
-        }
-        .consult-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #58a6ff;
-            color: #0d1117;
-            padding: 13px 18px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            width: 100%;
-            border: none;
-            cursor: pointer;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .consult-btn:active {
-            transform: scale(0.97);
-            opacity: 0.85;
-        }
-        .consult-btn svg {
-            width: 22px;
-            height: 22px;
-            fill: #0d1117;
-            flex-shrink: 0;
-            pointer-events: none;
-        }
-        .fixed-order {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 10px 16px 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            z-index: 200;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .fixed-order .consult-btn {
-            flex: 1;
-            padding: 11px 16px;
-            font-size: 0.9rem;
-        }
-        .fixed-order .consult-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-        .fixed-order-label {
-            font-size: 0.55rem;
-            color: rgba(255, 255, 255, 0.2);
-            white-space: nowrap;
-            letter-spacing: 0.5px;
-        }
-        .delivery-info {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            padding: 10px 16px;
-            margin: 0 12px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px 20px;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .section-title {
-            color: #e6edf3;
-            font-size: 1.1rem;
-            font-weight: 700;
-            padding: 16px 0 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-title .badge {
-            font-size: 0.6rem;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 2px 10px;
-            border-radius: 30px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.4);
-        }
-        .perfume-photo {
-            width: 100%;
-            height: 170px;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .perfume-photo:active {
-            transform: scale(0.97);
-        }
-        .perfume-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .perfume-photo .placeholder {
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-        .perfume-photo .placeholder span {
-            font-size: 0.6rem;
-            opacity: 0.3;
-        }
-        .photo-hint {
-            font-size: 0.5rem;
-            color: rgba(255, 255, 255, 0.1);
-            text-align: center;
-            margin-top: -6px;
-            margin-bottom: 10px;
-        }
-        .photo-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .photo-overlay.active {
-            display: flex;
-        }
-        .photo-overlay-inner {
-            position: relative;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .photo-overlay img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 20px;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-            display: block;
-            margin: 0 auto;
-        }
-        .photo-overlay-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #fff;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .reviews-section {
-            margin-top: 20px;
-            padding: 20px 0 10px;
-        }
-        .reviews-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #e6edf3;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .reviews-title span {
-            color: #58a6ff;
-        }
-        .reviews-title .count {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 2px 12px;
-            border-radius: 30px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.4);
-        }
-        .reviews-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .review-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(8px);
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-        .review-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #58a6ff;
-            flex-shrink: 0;
-        }
-        .review-info {
-            flex: 1;
-        }
-        .review-name {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #e6edf3;
-        }
-        .review-city {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.3);
-        }
-        .review-stars {
-            display: flex;
-            gap: 2px;
-            margin-top: 2px;
-        }
-        .review-stars svg {
-            width: 14px;
-            height: 14px;
-            fill: #f5b342;
-        }
-        .review-stars .empty {
-            fill: rgba(255, 255, 255, 0.05);
-        }
-        .review-text {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: #e6edf3;
-            opacity: 0.7;
-            font-style: italic;
-        }
-        .review-text::before {
-            content: '"';
-            color: #58a6ff;
-            font-size: 1.2rem;
-        }
-        .review-text::after {
-            content: '"';
-            color: #58a6ff;
-            font-size: 1.2rem;
-        }
-        .empty {
-            text-align: center;
-            padding: 40px 20px;
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-        }
-        .money-block {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(8px);
-            border-radius: 20px;
-            padding: 20px 18px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .money-block h2 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #e6edf3;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .money-block h2 span {
-            color: #58a6ff;
-        }
-        .money-block p {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #e6edf3;
-            opacity: 0.6;
-            margin-bottom: 8px;
-        }
-        .money-block .highlight {
-            color: #58a6ff;
-            font-weight: 700;
-        }
-        .money-block .divider {
-            width: 40px;
-            height: 2px;
-            background: #58a6ff;
-            margin: 10px 0 12px;
-            opacity: 0.2;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', 'Times New Roman', serif; }
+        body { background: #0d1117; min-height: 100vh; padding: 0 0 90px; }
+        .header { background: #0d1117; padding: 16px 16px 12px; color: #e6edf3; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+        .header h1 { font-size: 1.4rem; font-weight: 700; color: #e6edf3; }
+        .header h1 span { color: #58a6ff; font-weight: 300; }
+        .header-phone { font-size: 0.75rem; background: #21262d; padding: 5px 14px; border-radius: 30px; color: #e6edf3; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.04); }
+        .header-info { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.65rem; opacity: 0.5; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 8px; color: #e6edf3; }
+        .header-social { display: flex; gap: 8px; align-items: center; }
+        .header-social a { color: #e6edf3; text-decoration: none; font-size: 0.6rem; opacity: 0.5; display: flex; align-items: center; gap: 4px; }
+        .type-tabs { background: #0d1117; padding: 10px 12px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.04); position: sticky; top: 82px; z-index: 99; overflow-x: auto; scrollbar-width: none; }
+        .type-tabs::-webkit-scrollbar { display: none; }
+        .type-btn { padding: 6px 14px; border: 1px solid rgba(255,255,255,0.06); border-radius: 30px; background: rgba(255,255,255,0.02); font-size: 0.7rem; font-weight: 600; color: #e6edf3; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+        .type-btn.active { background: #58a6ff; color: #0d1117; border-color: #58a6ff; }
+        .type-btn .count { font-size: 0.5rem; opacity: 0.5; margin-left: 4px; }
+        .catalog { padding: 12px 12px 20px; max-width: 600px; margin: 0 auto; }
+        .card { background: #161b22; border-radius: 20px; padding: 16px 16px 14px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.04); }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
+        .card-brand { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.2px; color: #58a6ff; font-weight: 700; opacity: 0.6; }
+        .card-gender { font-size: 0.5rem; text-transform: uppercase; background: rgba(255,255,255,0.04); padding: 2px 10px; border-radius: 30px; color: #e6edf3; font-weight: 600; border: 1px solid rgba(255,255,255,0.04); }
+        .card-name { font-size: 1.25rem; font-weight: 700; color: #e6edf3; margin-bottom: 2px; }
+        .card-house { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
+        .card-vibe { font-size: 0.85rem; font-style: italic; color: #e6edf3; background: rgba(255,255,255,0.02); padding: 10px 14px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #58a6ff; line-height: 1.5; }
+        .card-accords { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-bottom: 14px; }
+        .accord-tag { background: rgba(255,255,255,0.04); padding: 3px 12px; border-radius: 30px; font-size: 0.6rem; font-weight: 500; color: #e6edf3; border: 1px solid rgba(255,255,255,0.04); }
+        .accord-tag.primary { background: rgba(88,166,255,0.12); color: #58a6ff; border-color: rgba(88,166,255,0.08); }
+        .type-label { display: inline-block; font-size: 0.5rem; padding: 2px 12px; border-radius: 30px; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px; }
+        .type-label.warm { background: rgba(255,150,50,0.15); color: #ff8c42; }
+        .type-label.tart { background: rgba(200,180,100,0.15); color: #d4af37; }
+        .type-label.fresh { background: rgba(80,200,160,0.15); color: #4dd0a0; }
+        .type-label.floral { background: rgba(200,150,200,0.12); color: #ce93d8; }
+        .type-label.sweet { background: rgba(255,150,180,0.12); color: #f06292; }
+        .type-label.woody { background: rgba(150,120,80,0.15); color: #a1887f; }
+        .consult-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #58a6ff; color: #0d1117; padding: 13px 18px; border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 0.95rem; width: 100%; border: none; cursor: pointer; }
+        .consult-btn:active { transform: scale(0.97); opacity: 0.85; }
+        .consult-btn svg { width: 22px; height: 22px; fill: #0d1117; flex-shrink: 0; }
+        .fixed-order { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(13,17,23,0.95); backdrop-filter: blur(12px); padding: 10px 16px 14px; border-top: 1px solid rgba(255,255,255,0.04); z-index: 200; display: flex; gap: 10px; align-items: center; }
+        .fixed-order .consult-btn { flex: 1; padding: 11px 16px; font-size: 0.9rem; }
+        .fixed-order .consult-btn svg { width: 20px; height: 20px; }
+        .fixed-order-label { font-size: 0.55rem; color: rgba(255,255,255,0.2); white-space: nowrap; letter-spacing: 0.5px; }
+        .delivery-info { background: rgba(255,255,255,0.02); border-radius: 16px; padding: 10px 16px; margin: 0 12px 12px; border: 1px solid rgba(255,255,255,0.04); display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center; font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+        .section-title { color: #e6edf3; font-size: 1.1rem; font-weight: 700; padding: 16px 0 10px; border-bottom: 1px solid rgba(255,255,255,0.04); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        .section-title .badge { font-size: 0.6rem; background: rgba(255,255,255,0.04); padding: 2px 10px; border-radius: 30px; font-weight: 400; color: rgba(255,255,255,0.4); }
+        .perfume-photo { width: 100%; height: 170px; border-radius: 16px; overflow: hidden; margin-bottom: 12px; background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.04); }
+        .perfume-photo:active { transform: scale(0.97); }
+        .perfume-photo img { width: 100%; height: 100%; object-fit: contain; }
+        .perfume-photo .placeholder { color: rgba(255,255,255,0.1); font-size: 2rem; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .perfume-photo .placeholder span { font-size: 0.6rem; opacity: 0.3; }
+        .photo-hint { font-size: 0.5rem; color: rgba(255,255,255,0.1); text-align: center; margin-top: -6px; margin-bottom: 10px; }
+        .photo-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); z-index: 999; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .photo-overlay.active { display: flex; }
+        .photo-overlay-inner { position: relative; max-width: 100%; max-height: 100%; }
+        .photo-overlay img { max-width: 100%; max-height: 80vh; border-radius: 20px; box-shadow: 0 20px 80px rgba(0,0,0,0.5); display: block; margin: 0 auto; }
+        .photo-overlay-close { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 2rem; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .reviews-section { margin-top: 20px; padding: 20px 0 10px; }
+        .reviews-title { font-size: 1.3rem; font-weight: 700; color: #e6edf3; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .reviews-title span { color: #58a6ff; }
+        .reviews-title .count { font-size: 0.7rem; background: rgba(255,255,255,0.04); padding: 2px 12px; border-radius: 30px; font-weight: 400; color: rgba(255,255,255,0.4); }
+        .reviews-grid { display: flex; flex-direction: column; gap: 12px; }
+        .review-card { background: rgba(255,255,255,0.02); backdrop-filter: blur(8px); border-radius: 16px; padding: 16px; border: 1px solid rgba(255,255,255,0.04); }
+        .review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .review-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #58a6ff; flex-shrink: 0; }
+        .review-info { flex: 1; }
+        .review-name { font-size: 0.9rem; font-weight: 700; color: #e6edf3; }
+        .review-city { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+        .review-stars { display: flex; gap: 2px; margin-top: 2px; }
+        .review-stars svg { width: 14px; height: 14px; fill: #f5b342; }
+        .review-stars .empty { fill: rgba(255,255,255,0.05); }
+        .review-text { font-size: 0.85rem; line-height: 1.5; color: #e6edf3; opacity: 0.7; font-style: italic; }
+        .review-text::before { content: '"'; color: #58a6ff; font-size: 1.2rem; }
+        .review-text::after { content: '"'; color: #58a6ff; font-size: 1.2rem; }
+        .empty { text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.1); font-size: 0.9rem; }
+        .money-block { background: rgba(255,255,255,0.02); backdrop-filter: blur(8px); border-radius: 20px; padding: 20px 18px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.04); }
+        .money-block h2 { font-size: 1.2rem; font-weight: 700; color: #e6edf3; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .money-block h2 span { color: #58a6ff; }
+        .money-block p { font-size: 0.85rem; line-height: 1.6; color: #e6edf3; opacity: 0.6; margin-bottom: 8px; }
+        .money-block .highlight { color: #58a6ff; font-weight: 700; }
+        .money-block .divider { width: 40px; height: 2px; background: #58a6ff; margin: 10px 0 12px; opacity: 0.2; }
         @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.15rem;
-            }
-            .header-phone {
-                font-size: 0.65rem;
-                padding: 4px 12px;
-            }
-            .type-btn {
-                font-size: 0.6rem;
-                padding: 5px 10px;
-            }
-            .card-name {
-                font-size: 1.05rem;
-            }
-            .card-vibe {
-                font-size: 0.75rem;
-                padding: 8px 12px;
-            }
-            .consult-btn {
-                font-size: 0.8rem;
-                padding: 11px 14px;
-            }
-            .fixed-order {
-                padding: 8px 12px 12px;
-            }
-            .fixed-order .consult-btn {
-                font-size: 0.75rem;
-                padding: 10px 14px;
-            }
-            .catalog {
-                padding: 8px 8px 16px;
-            }
-            .card {
-                padding: 12px;
-            }
-            .section-title {
-                font-size: 0.95rem;
-            }
-            .perfume-photo {
-                height: 140px;
-            }
-            .delivery-info {
-                font-size: 0.6rem;
-                padding: 8px 12px;
-                gap: 6px 12px;
-            }
-            .header-social a {
-                font-size: 0.5rem;
-            }
-            .reviews-title {
-                font-size: 1.1rem;
-            }
-            .review-text {
-                font-size: 0.75rem;
-            }
-            .review-name {
-                font-size: 0.8rem;
-            }
+            .header h1 { font-size: 1.15rem; }
+            .header-phone { font-size: 0.65rem; padding: 4px 12px; }
+            .type-btn { font-size: 0.6rem; padding: 5px 10px; }
+            .card-name { font-size: 1.05rem; }
+            .card-vibe { font-size: 0.75rem; padding: 8px 12px; }
+            .consult-btn { font-size: 0.8rem; padding: 11px 14px; }
+            .fixed-order { padding: 8px 12px 12px; }
+            .fixed-order .consult-btn { font-size: 0.75rem; padding: 10px 14px; }
+            .catalog { padding: 8px 8px 16px; }
+            .card { padding: 12px; }
+            .section-title { font-size: 0.95rem; }
+            .perfume-photo { height: 140px; }
+            .delivery-info { font-size: 0.6rem; padding: 8px 12px; gap: 6px 12px; }
+            .header-social a { font-size: 0.5rem; }
+            .reviews-title { font-size: 1.1rem; }
+            .review-text { font-size: 0.75rem; }
+            .review-name { font-size: 0.8rem; }
         }
         @media (max-width: 380px) {
-            .header h1 {
-                font-size: 0.95rem;
-            }
-            .type-btn {
-                font-size: 0.5rem;
-                padding: 4px 8px;
-            }
-            .card-name {
-                font-size: 0.9rem;
-            }
-            .perfume-photo {
-                height: 110px;
-            }
+            .header h1 { font-size: 0.95rem; }
+            .type-btn { font-size: 0.5rem; padding: 4px 8px; }
+            .card-name { font-size: 0.9rem; }
+            .perfume-photo { height: 110px; }
         }
     </style>
 </head>
@@ -655,7 +132,7 @@
     </div>
 
     <div class="type-tabs" id="typeTabs">
-        <button class="type-btn active" data-type="all">🏷️ Все <span class="count">(69)</span></button>
+        <button class="type-btn active" data-type="all">🏷️ Все <span class="count">(67)</span></button>
         <button class="type-btn" data-type="warm">🔥 Тёплые <span class="count">(0)</span></button>
         <button class="type-btn" data-type="tart">🌿 Терпкие <span class="count">(0)</span></button>
         <button class="type-btn" data-type="fresh">🍃 Свежие <span class="count">(0)</span></button>
@@ -706,7 +183,7 @@
             { name: "Айжан", city: "Алматы", text: "Заказым келді! Иісі өте жағымды, күні бойы тұрады. Көп рахмет!", rating: 5 }
         ];
 
-        // ===== 69 АРОМАТОВ =====
+        // ===== ВСЕ АРОМАТЫ (67) =====
         const perfumes = [
             { name: "212 Men", brand: "Carolina Herrera", house: "CAROLINA HERRERA", gender: "для мужчин", type: "fresh", vibe: "Классическая свежесть. Вы — мужчина, который всегда в центре внимания.", accords: ["цитрусовый", "зеленый", "свежий пряный", "фужерный", "древесный", "пудровый", "теплый пряный", "мускусный", "лаванда", "фиалковый"] },
             { name: "Absolu Aventus", brand: "Creed", house: "CREED", gender: "для мужчин", type: "tart", vibe: "Абсолютная мощь. Вы — лидер, который не признаёт компромиссов.", accords: ["цитрусовый", "свежий пряный", "теплый пряный", "фужерный", "древесный", "фруктовый", "мягкий пряный", "землистый", "пачулиевый", "коричный"] },
@@ -779,77 +256,77 @@
             { name: "Bleu de Chanel", brand: "Chanel", house: "CHANEL", gender: "для мужчин", type: "fresh", vibe: "Синяя элегантность. Вы — мужчина, который всегда в центре внимания.", accords: ["цитрусовый", "древесный", "фужерный", "амбровый", "пряный"] }
         ];
 
-        // ===== КАРТА ФОТО =====
+        // ===== КАРТА ФОТО (ПРАВИЛЬНЫЕ ПУТИ) =====
         const photoMap = {
-            "212 Men": "212-men.jpg",
-            "Absolu Aventus": "absolu-aventus.jpg",
-            "Acqua di Gio": "acqua-di-gio.jpg",
-            "Afternoon Swim": "afternoon-swim.jpg",
-            "Al Fareed": "al-fareed.jpg",
-            "Allure Homme Sport": "allure-homme-sport.jpg",
-            "Althair": "althair.jpg",
-            "Amberwood": "amberwood.jpg",
-            "Angels' Share": "angels-share.jpg",
-            "Aventus": "aventus.jpg",
-            "Bal d'Afrique": "bal-d-afrique.jpg",
-            "Black Afgano": "black-afgano.jpg",
-            "Black Pepper & Amber": "black-pepper-amber.jpg",
-            "Blonde Amber": "blonde-amber.jpg",
-            "Blue Seduction": "blue-seduction.jpg",
-            "Blue Talisman": "blue-talisman.jpg",
-            "Bois Impérial": "bois-imperial.jpg",
-            "Boss The Scent Pure Accord": "boss-the-scent-pure-accord.jpg",
-            "Dior Homme": "dior-homme.jpg",
-            "Egoïste": "egoiste.jpg",
-            "Elysium Pour Homme": "elysium-pour-homme.jpg",
-            "Eros": "eros.jpg",
-            "Escentric 02": "escentric-02.jpg",
-            "Explorer": "explorer.jpg",
-            "Fahrenheit": "fahrenheit.jpg",
-            "Gaba": "gaba.jpg",
-            "Ganymede": "ganymede.jpg",
-            "Green Irish Tweed": "green-irish-tweed.jpg",
-            "Greenley": "greenley.jpg",
-            "Hanuman": "hanuman.jpg",
-            "Hypnôse Homme": "hypnose-homme.jpg",
-            "Imagination": "imagination.jpg",
-            "Interlude Man": "interlude-man.jpg",
-            "Invictus": "invictus.jpg",
-            "Irish Leather": "irish-leather.jpg",
-            "Isola Blu": "isola-blu.jpg",
-            "Jump Up And Kiss Me": "jump-up-and-kiss-me.jpg",
-            "Layton": "layton.jpg",
-            "Le Beau Le Parfum": "le-beau-le-parfum.jpg",
-            "Millésime Impérial": "millesime-imperial.jpg",
-            "Moon Tale": "moon-tale.jpg",
-            "Oceania": "oceania.jpg",
-            "Ombre Leather": "ombre-leather.jpg",
-            "Ombre Nomade": "ombre-nomade.jpg",
-            "Oud for Greatness": "oud-for-greatness.jpg",
-            "Oud Maracutá": "oud-maracuta.jpg",
-            "Oud Zarian": "oud-zarian.jpg",
-            "Red Tobacco": "red-tobacco.jpg",
-            "Reef 33": "reef-33.jpg",
-            "Rolling in Love": "rolling-in-love.jpg",
-            "Sauvage": "sauvage.jpg",
-            "Silver Mountain Water": "silver-mountain-water.jpg",
-            "Strange Heavens": "strange-heavens.jpg",
-            "Stronger With You Intensely": "stronger-with-you-intensely.jpg",
-            "Symphony": "symphony.jpg",
-            "Terre d'Hermès": "terre-d-hermes.jpg",
-            "The Dreamer": "the-dreamer.jpg",
-            "Tiger": "tiger.jpg",
-            "Tobacco Vanille": "tobacco-vanille.jpg",
-            "Torino21": "torino21.jpg",
-            "Tygar": "tygar.jpg",
-            "Vanilla Blend": "vanilla-blend.jpg",
-            "Vanilla Sex": "vanilla-sex.jpg",
-            "Versace Pour Homme Oud Noir": "versace-pour-homme-oud-noir.jpg",
-            "Viking": "viking.jpg",
-            "Vodka on the Rocks": "vodka-on-the-rocks.jpg",
-            "Wild Vetiver": "wild-vetiver.jpg",
-            "Y Eau de Parfum": "y-eau-de-parfum.jpg",
-            "Bleu de Chanel": "bleu-de-chanel.jpg"
+            "212 Men": "212-men.jpg.jpeg",
+            "Absolu Aventus": "absolu-aventus-creed.jpg.jpeg",
+            "Acqua di Gio": "acqua-di-gio.jpg.jpeg",
+            "Afternoon Swim": "afternoon-swim-louis-vuitton.jpg.jpeg",
+            "Al Fareed": "al-fareed.jpg.jpeg",
+            "Allure Homme Sport": "allure-homme-sport.jpg.jpeg",
+            "Althair": "althair.jpg.jpeg",
+            "Amberwood": "amberwood-clive-christian.jpg.jpeg",
+            "Angels' Share": "angels-share-by-kilian.jpg.jpeg",
+            "Aventus": "aventus.jpg.jpeg",
+            "Bal d'Afrique": "bal-d-afrique-byredo.jpg.jpeg",
+            "Black Afgano": "black-afgano.jpg.jpeg",
+            "Black Pepper & Amber": "black-pepper-amber.jpg.jpeg",
+            "Blonde Amber": "blonde-amber-clive-christian.jpg.jpeg",
+            "Blue Seduction": "blue-seduction-antonio-banderas.jpg.jpeg",
+            "Blue Talisman": "blue-talisman-ex-nihilo.jpg.jpeg",
+            "Bois Impérial": "bois-imperial-essential-parfums.jpg.jpeg",
+            "Boss The Scent Pure Accord": "boss-the-scent-pure-accord.jpg.jpeg",
+            "Dior Homme": "",
+            "Egoïste": "egoiste.jpg.jpeg",
+            "Elysium Pour Homme": "elysium-pour-homme-roja-dove.jpg.jpeg",
+            "Eros": "eros-versace.jpg.jpeg",
+            "Escentric 02": "escentric-02.jpg.jpeg",
+            "Explorer": "explorer-montblanc.jpg.jpeg",
+            "Fahrenheit": "",
+            "Gaba": "gaba-hormone-paris.jpg.jpeg",
+            "Ganymede": "ganymede-marc-antoine-barrois.jpg.jpeg",
+            "Green Irish Tweed": "",
+            "Greenley": "greenley.jpg.jpeg",
+            "Hanuman": "hanuman-boadicea.jpg.jpeg",
+            "Hypnôse Homme": "hypnose-homme.jpg.jpeg",
+            "Imagination": "imagination-louis-vuitton.jpg.jpeg",
+            "Interlude Man": "interlude-man.jpg.jpeg",
+            "Invictus": "invictus.jpg.jpeg",
+            "Irish Leather": "irish-leather-memo-paris.jpg.jpeg",
+            "Isola Blu": "isola-blu-roja-dove.jpg.jpeg",
+            "Jump Up And Kiss Me": "jump-up-and-kiss-me.jpg.jpeg",
+            "Layton": "layton-parfums-de-marly.jpg.jpeg",
+            "Le Beau Le Parfum": "le-beau-le-parfum.jpg.jpeg",
+            "Millésime Impérial": "millesime-imperial-creed.jpg.jpeg",
+            "Moon Tale": "moon-tale.jpg.jpeg",
+            "Oceania": "oceania-roja-dove.jpg.jpeg",
+            "Ombre Leather": "ombre-leather.jpg.jpeg",
+            "Ombre Nomade": "ombre-nomade.jpg.jpeg",
+            "Oud for Greatness": "oud-for-greatness.jpg.jpeg",
+            "Oud Maracutá": "oud-maracuta.jpg.jpeg",
+            "Oud Zarian": "oud-zarian.jpg.jpeg",
+            "Red Tobacco": "red-tobacco.jpg.jpeg",
+            "Reef 33": "reef-33.jpg.jpeg",
+            "Rolling in Love": "rolling-in-love.jpg.jpeg",
+            "Sauvage": "sauvage-dior.jpg.jpeg",
+            "Silver Mountain Water": "silver-mountain-water.jpg.jpeg",
+            "Strange Heavens": "strange-heavens-clive-christian.jpg.jpeg",
+            "Stronger With You Intensely": "stronger-with-you-intensely.jpg.jpeg",
+            "Symphony": "symphony.jpg.jpeg",
+            "Terre d'Hermès": "",
+            "The Dreamer": "the-dreamer.jpg.jpeg",
+            "Tiger": "tiger-boadicea.jpg.jpeg",
+            "Tobacco Vanille": "tobacco-vanille.jpg.jpeg",
+            "Torino21": "torino21-xerjoff.jpg.jpeg",
+            "Tygar": "tygar.jpg.jpeg",
+            "Vanilla Blend": "vanilla-blend-zielinski-rozen.jpg.jpeg",
+            "Vanilla Sex": "vanilla-sex-tom-ford.jpg.jpeg",
+            "Versace Pour Homme Oud Noir": "versace-pour-homme-oud-noir.jpg.jpeg",
+            "Viking": "",
+            "Vodka on the Rocks": "vodka-on-the-rocks-by-kilian.jpg.jpeg",
+            "Wild Vetiver": "wild-vetiver-creed.jpg.jpeg",
+            "Y Eau de Parfum": "y-eau-de-parfum.jpg.jpeg",
+            "Bleu de Chanel": ""
         };
 
         const typeNames = {
