@@ -6,83 +6,93 @@
     <title>Arsense Aroma - Мужские ароматы</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', 'Times New Roman', serif; }
-        body { background: #0d1117; min-height: 100vh; padding: 0 0 90px; }
-        .header { background: #0d1117; padding: 16px 16px 12px; color: #e6edf3; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        body {
+            background: #0a0a0a;
+            background: radial-gradient(ellipse at 30% 10%, #1a1a1a 0%, #0a0a0a 70%);
+            min-height: 100vh;
+            padding: 0 0 90px;
+        }
+        .header { background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); padding: 16px 16px 12px; color: #e6edf3; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.04); }
         .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
         .header h1 { font-size: 1.4rem; font-weight: 700; color: #e6edf3; }
         .header h1 span { color: #58a6ff; font-weight: 300; }
-        .header-phone { font-size: 0.75rem; background: #21262d; padding: 5px 14px; border-radius: 30px; color: #e6edf3; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.04); }
-        .header-info { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.65rem; opacity: 0.5; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 8px; color: #e6edf3; }
+        .header-phone { font-size: 0.75rem; background: rgba(255,255,255,0.04); padding: 5px 14px; border-radius: 30px; color: #e6edf3; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.04); }
+        .header-info { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.65rem; opacity: 0.4; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 8px; color: #e6edf3; }
         .header-social { display: flex; gap: 8px; align-items: center; }
-        .header-social a { color: #e6edf3; text-decoration: none; font-size: 0.6rem; opacity: 0.5; display: flex; align-items: center; gap: 4px; }
-        .type-tabs { background: #0d1117; padding: 10px 12px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.04); position: sticky; top: 82px; z-index: 99; overflow-x: auto; scrollbar-width: none; }
+        .header-social a { color: #e6edf3; text-decoration: none; font-size: 0.6rem; opacity: 0.4; display: flex; align-items: center; gap: 4px; }
+        .type-tabs { background: rgba(10,10,10,0.6); backdrop-filter: blur(8px); padding: 10px 12px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.04); position: sticky; top: 82px; z-index: 99; overflow-x: auto; scrollbar-width: none; }
         .type-tabs::-webkit-scrollbar { display: none; }
-        .type-btn { padding: 6px 14px; border: 1px solid rgba(255,255,255,0.06); border-radius: 30px; background: rgba(255,255,255,0.02); font-size: 0.7rem; font-weight: 600; color: #e6edf3; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
-        .type-btn.active { background: #58a6ff; color: #0d1117; border-color: #58a6ff; }
+        .type-btn { padding: 6px 14px; border: 1px solid rgba(255,255,255,0.06); border-radius: 30px; background: rgba(255,255,255,0.02); font-size: 0.7rem; font-weight: 600; color: #e6edf3; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.3s ease; }
+        .type-btn:hover { background: rgba(255,255,255,0.06); }
+        .type-btn.active { background: #58a6ff; color: #0a0a0a; border-color: #58a6ff; }
         .type-btn .count { font-size: 0.5rem; opacity: 0.5; margin-left: 4px; }
         .catalog { padding: 12px 12px 20px; max-width: 600px; margin: 0 auto; }
-        .card { background: #161b22; border-radius: 20px; padding: 16px 16px 14px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.04); }
+        .card { background: rgba(255,255,255,0.02); backdrop-filter: blur(8px); border-radius: 20px; padding: 16px 16px 14px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.04); transition: all 0.3s ease; }
+        .card:hover { border-color: rgba(88,166,255,0.15); transform: translateY(-2px); }
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
         .card-brand { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.2px; color: #58a6ff; font-weight: 700; opacity: 0.6; }
         .card-gender { font-size: 0.5rem; text-transform: uppercase; background: rgba(255,255,255,0.04); padding: 2px 10px; border-radius: 30px; color: #e6edf3; font-weight: 600; border: 1px solid rgba(255,255,255,0.04); }
-        .card-name { font-size: 1.25rem; font-weight: 700; color: #e6edf3; margin-bottom: 2px; }
-        .card-house { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
-        .card-vibe { font-size: 0.85rem; font-style: italic; color: #e6edf3; background: rgba(255,255,255,0.02); padding: 10px 14px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #58a6ff; line-height: 1.5; }
+        .card-name { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
+        .card-house { font-size: 0.75rem; color: rgba(255,255,255,0.2); margin-bottom: 6px; }
+        .card-vibe { font-size: 0.85rem; font-style: italic; color: #e6edf3; background: rgba(255,255,255,0.02); padding: 10px 14px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #58a6ff; line-height: 1.5; opacity: 0.7; }
         .card-accords { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-bottom: 14px; }
-        .accord-tag { background: rgba(255,255,255,0.04); padding: 3px 12px; border-radius: 30px; font-size: 0.6rem; font-weight: 500; color: #e6edf3; border: 1px solid rgba(255,255,255,0.04); }
-        .accord-tag.primary { background: rgba(88,166,255,0.12); color: #58a6ff; border-color: rgba(88,166,255,0.08); }
+        .accord-tag { background: rgba(255,255,255,0.03); padding: 3px 12px; border-radius: 30px; font-size: 0.6rem; font-weight: 500; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.04); }
+        .accord-tag.primary { background: rgba(88,166,255,0.08); color: #58a6ff; border-color: rgba(88,166,255,0.08); }
         .type-label { display: inline-block; font-size: 0.5rem; padding: 2px 12px; border-radius: 30px; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px; }
-        .type-label.warm { background: rgba(255,150,50,0.15); color: #ff8c42; }
-        .type-label.tart { background: rgba(200,180,100,0.15); color: #d4af37; }
-        .type-label.fresh { background: rgba(80,200,160,0.15); color: #4dd0a0; }
-        .type-label.floral { background: rgba(200,150,200,0.12); color: #ce93d8; }
-        .type-label.sweet { background: rgba(255,150,180,0.12); color: #f06292; }
-        .type-label.woody { background: rgba(150,120,80,0.15); color: #a1887f; }
-        .consult-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #58a6ff; color: #0d1117; padding: 13px 18px; border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 0.95rem; width: 100%; border: none; cursor: pointer; }
+        .type-label.warm { background: rgba(255,150,50,0.1); color: #ff8c42; border: 1px solid rgba(255,150,50,0.06); }
+        .type-label.tart { background: rgba(200,180,100,0.08); color: #d4af37; border: 1px solid rgba(200,180,100,0.06); }
+        .type-label.fresh { background: rgba(80,200,160,0.08); color: #4dd0a0; border: 1px solid rgba(80,200,160,0.06); }
+        .type-label.floral { background: rgba(200,150,200,0.06); color: #ce93d8; border: 1px solid rgba(200,150,200,0.06); }
+        .type-label.sweet { background: rgba(255,150,180,0.06); color: #f06292; border: 1px solid rgba(255,150,180,0.06); }
+        .type-label.woody { background: rgba(150,120,80,0.08); color: #a1887f; border: 1px solid rgba(150,120,80,0.06); }
+        .consult-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #58a6ff; color: #0a0a0a; padding: 13px 18px; border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 0.95rem; width: 100%; border: none; cursor: pointer; transition: all 0.3s ease; }
+        .consult-btn:hover { background: #79b8ff; transform: scale(1.01); }
         .consult-btn:active { transform: scale(0.97); opacity: 0.85; }
-        .consult-btn svg { width: 22px; height: 22px; fill: #0d1117; flex-shrink: 0; }
-        .fixed-order { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(13,17,23,0.95); backdrop-filter: blur(12px); padding: 10px 16px 14px; border-top: 1px solid rgba(255,255,255,0.04); z-index: 200; display: flex; gap: 10px; align-items: center; }
+        .consult-btn svg { width: 22px; height: 22px; fill: #0a0a0a; flex-shrink: 0; }
+        .fixed-order { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); padding: 10px 16px 14px; border-top: 1px solid rgba(255,255,255,0.04); z-index: 200; display: flex; gap: 10px; align-items: center; }
         .fixed-order .consult-btn { flex: 1; padding: 11px 16px; font-size: 0.9rem; }
         .fixed-order .consult-btn svg { width: 20px; height: 20px; }
         .fixed-order-label { font-size: 0.55rem; color: rgba(255,255,255,0.2); white-space: nowrap; letter-spacing: 0.5px; }
-        .delivery-info { background: rgba(255,255,255,0.02); border-radius: 16px; padding: 10px 16px; margin: 0 12px 12px; border: 1px solid rgba(255,255,255,0.04); display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center; font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+        .delivery-info { background: rgba(255,255,255,0.02); border-radius: 16px; padding: 10px 16px; margin: 0 12px 12px; border: 1px solid rgba(255,255,255,0.04); display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center; font-size: 0.7rem; color: rgba(255,255,255,0.3); }
         .section-title { color: #e6edf3; font-size: 1.1rem; font-weight: 700; padding: 16px 0 10px; border-bottom: 1px solid rgba(255,255,255,0.04); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-        .section-title .badge { font-size: 0.6rem; background: rgba(255,255,255,0.04); padding: 2px 10px; border-radius: 30px; font-weight: 400; color: rgba(255,255,255,0.4); }
-        .perfume-photo { width: 100%; height: 170px; border-radius: 16px; overflow: hidden; margin-bottom: 12px; background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.04); }
+        .section-title .badge { font-size: 0.6rem; background: rgba(255,255,255,0.04); padding: 2px 10px; border-radius: 30px; font-weight: 400; color: rgba(255,255,255,0.3); }
+        .perfume-photo { width: 100%; height: 170px; border-radius: 16px; overflow: hidden; margin-bottom: 12px; background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.04); transition: all 0.3s ease; }
+        .perfume-photo:hover { border-color: rgba(88,166,255,0.15); }
         .perfume-photo:active { transform: scale(0.97); }
         .perfume-photo img { width: 100%; height: 100%; object-fit: contain; }
-        .perfume-photo .placeholder { color: rgba(255,255,255,0.1); font-size: 2rem; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .perfume-photo .placeholder { color: rgba(255,255,255,0.05); font-size: 2rem; display: flex; flex-direction: column; align-items: center; gap: 4px; }
         .perfume-photo .placeholder span { font-size: 0.6rem; opacity: 0.3; }
-        .photo-hint { font-size: 0.5rem; color: rgba(255,255,255,0.1); text-align: center; margin-top: -6px; margin-bottom: 10px; }
-        .photo-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); z-index: 999; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .photo-hint { font-size: 0.5rem; color: rgba(255,255,255,0.06); text-align: center; margin-top: -6px; margin-bottom: 10px; }
+        .photo-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(12px); z-index: 999; display: none; justify-content: center; align-items: center; padding: 20px; }
         .photo-overlay.active { display: flex; }
         .photo-overlay-inner { position: relative; max-width: 100%; max-height: 100%; }
-        .photo-overlay img { max-width: 100%; max-height: 80vh; border-radius: 20px; box-shadow: 0 20px 80px rgba(0,0,0,0.5); display: block; margin: 0 auto; }
-        .photo-overlay-close { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 2rem; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .photo-overlay img { max-width: 100%; max-height: 80vh; border-radius: 20px; box-shadow: 0 20px 80px rgba(0,0,0,0.8); display: block; margin: 0 auto; }
+        .photo-overlay-close { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.06); border: none; color: #fff; font-size: 2rem; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .photo-overlay-close:hover { background: rgba(255,255,255,0.12); }
         .reviews-section { margin-top: 20px; padding: 20px 0 10px; }
         .reviews-title { font-size: 1.3rem; font-weight: 700; color: #e6edf3; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .reviews-title span { color: #58a6ff; }
-        .reviews-title .count { font-size: 0.7rem; background: rgba(255,255,255,0.04); padding: 2px 12px; border-radius: 30px; font-weight: 400; color: rgba(255,255,255,0.4); }
+        .reviews-title .count { font-size: 0.7rem; background: rgba(255,255,255,0.04); padding: 2px 12px; border-radius: 30px; font-weight: 400; color: rgba(255,255,255,0.3); }
         .reviews-grid { display: flex; flex-direction: column; gap: 12px; }
         .review-card { background: rgba(255,255,255,0.02); backdrop-filter: blur(8px); border-radius: 16px; padding: 16px; border: 1px solid rgba(255,255,255,0.04); }
         .review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
         .review-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #58a6ff; flex-shrink: 0; }
         .review-info { flex: 1; }
         .review-name { font-size: 0.9rem; font-weight: 700; color: #e6edf3; }
-        .review-city { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+        .review-city { font-size: 0.7rem; color: rgba(255,255,255,0.2); }
         .review-stars { display: flex; gap: 2px; margin-top: 2px; }
         .review-stars svg { width: 14px; height: 14px; fill: #f5b342; }
-        .review-stars .empty { fill: rgba(255,255,255,0.05); }
-        .review-text { font-size: 0.85rem; line-height: 1.5; color: #e6edf3; opacity: 0.7; font-style: italic; }
+        .review-stars .empty { fill: rgba(255,255,255,0.04); }
+        .review-text { font-size: 0.85rem; line-height: 1.5; color: #e6edf3; opacity: 0.5; font-style: italic; }
         .review-text::before { content: '"'; color: #58a6ff; font-size: 1.2rem; }
         .review-text::after { content: '"'; color: #58a6ff; font-size: 1.2rem; }
-        .empty { text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.1); font-size: 0.9rem; }
-        .money-block { background: rgba(255,255,255,0.02); backdrop-filter: blur(8px); border-radius: 20px; padding: 20px 18px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.04); }
-        .money-block h2 { font-size: 1.2rem; font-weight: 700; color: #e6edf3; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .money-block h2 span { color: #58a6ff; }
-        .money-block p { font-size: 0.85rem; line-height: 1.6; color: #e6edf3; opacity: 0.6; margin-bottom: 8px; }
-        .money-block .highlight { color: #58a6ff; font-weight: 700; }
-        .money-block .divider { width: 40px; height: 2px; background: #58a6ff; margin: 10px 0 12px; opacity: 0.2; }
+        .empty { text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.05); font-size: 0.9rem; }
+        .welcome-block { background: rgba(255,255,255,0.02); backdrop-filter: blur(8px); border-radius: 20px; padding: 20px 18px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.04); }
+        .welcome-block h2 { font-size: 1.2rem; font-weight: 700; color: #e6edf3; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .welcome-block h2 span { color: #58a6ff; }
+        .welcome-block p { font-size: 0.85rem; line-height: 1.6; color: #e6edf3; opacity: 0.5; margin-bottom: 8px; }
+        .welcome-block .highlight { color: #58a6ff; font-weight: 700; }
+        .welcome-block .divider { width: 40px; height: 2px; background: #58a6ff; margin: 10px 0 12px; opacity: 0.2; }
         @media (max-width: 480px) {
             .header h1 { font-size: 1.15rem; }
             .header-phone { font-size: 0.65rem; padding: 4px 12px; }
@@ -101,6 +111,9 @@
             .reviews-title { font-size: 1.1rem; }
             .review-text { font-size: 0.75rem; }
             .review-name { font-size: 0.8rem; }
+            .welcome-block { padding: 16px 14px; }
+            .welcome-block h2 { font-size: 1rem; }
+            .welcome-block p { font-size: 0.75rem; }
         }
         @media (max-width: 380px) {
             .header h1 { font-size: 0.95rem; }
@@ -183,7 +196,7 @@
             { name: "Айжан", city: "Алматы", text: "Заказым келді! Иісі өте жағымды, күні бойы тұрады. Көп рахмет!", rating: 5 }
         ];
 
-        // ===== ВСЕ АРОМАТЫ (67) =====
+        // ===== 67 АРОМАТОВ =====
         const perfumes = [
             { name: "212 Men", brand: "Carolina Herrera", house: "CAROLINA HERRERA", gender: "для мужчин", type: "fresh", vibe: "Классическая свежесть. Вы — мужчина, который всегда в центре внимания.", accords: ["цитрусовый", "зеленый", "свежий пряный", "фужерный", "древесный", "пудровый", "теплый пряный", "мускусный", "лаванда", "фиалковый"] },
             { name: "Absolu Aventus", brand: "Creed", house: "CREED", gender: "для мужчин", type: "tart", vibe: "Абсолютная мощь. Вы — лидер, который не признаёт компромиссов.", accords: ["цитрусовый", "свежий пряный", "теплый пряный", "фужерный", "древесный", "фруктовый", "мягкий пряный", "землистый", "пачулиевый", "коричный"] },
@@ -256,7 +269,7 @@
             { name: "Bleu de Chanel", brand: "Chanel", house: "CHANEL", gender: "для мужчин", type: "fresh", vibe: "Синяя элегантность. Вы — мужчина, который всегда в центре внимания.", accords: ["цитрусовый", "древесный", "фужерный", "амбровый", "пряный"] }
         ];
 
-        // ===== КАРТА ФОТО (ПРАВИЛЬНЫЕ ПУТИ) =====
+        // ===== КАРТА ФОТО (67 штук) =====
         const photoMap = {
             "212 Men": "212-men.jpg.jpeg",
             "Absolu Aventus": "absolu-aventus-creed.jpg.jpeg",
@@ -430,15 +443,21 @@
                 return;
             }
 
-            let moneyBlock = '';
+            let welcomeBlock = '';
             if (type === 'all') {
-                moneyBlock = `
-                    <div class="money-block">
-                        <h2>💎 <span>Денежные</span> ароматы</h2>
+                welcomeBlock = `
+                    <div class="welcome-block">
+                        <h2>👔 <span>Arsense Aroma Men</span></h2>
                         <div class="divider"></div>
-                        <p><span class="highlight">Парфюмерия</span> – это искусство, способное перенести нас в мир эмоций и воспоминаний. <span class="highlight">Денежные ароматы</span> — это уникальные композиции, создающие ощущение богатства и успеха.</p>
-                        <p>В их составе — <span class="highlight">драгоценные ингредиенты</span>: редкие сорта розы, жасмина, ириса, амбра, ветивер, экстракты экзотических растений.</p>
-                        <p><span class="highlight">Ориентальные и шипровые нюансы</span> — ваниль, мускус, пачули — создают тёплый, притягательный фон.</p>
+                        <p>
+                            <span class="highlight">Парфюм</span> — это не просто запах. Это ваш <span class="highlight">стиль</span>, ваш <span class="highlight">характер</span>, ваша <span class="highlight">история</span>.
+                        </p>
+                        <p>
+                            В нашем каталоге — <span class="highlight">лучшие мужские ароматы</span> от нишевых и люксовых брендов. От классических древесных до ярких свежих — выбирайте тот, который говорит за вас.
+                        </p>
+                        <p>
+                            <span class="highlight">Arsense Aroma</span> — это ароматы, которые остаются в памяти.
+                        </p>
                     </div>
                 `;
             }
@@ -449,7 +468,7 @@
             }
 
             if (filtered.length === 0) {
-                container.innerHTML = moneyBlock + '<div class="empty">😕 Нет ароматов в этой категории</div>';
+                container.innerHTML = welcomeBlock + '<div class="empty">😕 Нет ароматов в этой категории</div>';
                 return;
             }
 
@@ -466,7 +485,7 @@
             const typeOrder = ['warm', 'tart', 'fresh', 'floral', 'sweet', 'woody'];
             const sortedTypes = Object.keys(grouped).sort((a, b) => typeOrder.indexOf(a) - typeOrder.indexOf(b));
 
-            let html = moneyBlock;
+            let html = welcomeBlock;
 
             for (const t of sortedTypes) {
                 const items = grouped[t];
